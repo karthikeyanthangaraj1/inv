@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tax Invoice</title>
+
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f2f2f2;
+}
+.page{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border:1px solid #ccc;
+}
+h2{
+    text-align:center;
+    margin:0 0 10px 0;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+th,td{
+    border:1px solid #000;
+    padding:6px;
+    vertical-align:top;
+}
+.small{font-size:12px;}
+.right{text-align:right;}
+.center{text-align:center;}
+.bold{font-weight:bold;}
+
+.header-table td{border:none;}
+.footer-table td{border:none;}
+
+.logo{width:90px;height:auto;}
+
+input, textarea{
+    width:100%;
+    border:none;
+    font-family:inherit;
+    font-size:13px;
+    box-sizing:border-box;
+}
+textarea{resize:none;}
+
+@media print{
+    button{display:none;}
+    body{background:white;}
+    .page{border:none;}
+}
+</style>
+</head>
+
+<body>
+
+<div style="text-align:center;margin-bottom:10px;">
+<button onclick="window.print()">🖨 Print Invoice</button>
+</div>
+
+<div class="page">
+
+<h2>Tax Invoice</h2>
+
+<table class="header-table">
+<tr>
+<td width="60%">
+    <table>
+    <tr>
+        <td style="border:none;width:100px;">
+            <img src="logo.png" class="logo">
+        </td>
+        <td style="border:none;">
+            <b>Jackappa TYRES</b><br>
+GST - 33ACEPE9852E1ZS <br>
+1112, Annai Comlex,<br>
+Opp Machuvadi Municipal School,<br>
+Thanjavur Main Road,<br>
+Pudukkottai- 622001<br>
+Contact: 9994368383
+        </td>
+    </tr>
+    </table>
+</td>
+
+<td class="small">
+    <b>Invoice No.</b>  __________________________ <br>
+    <b>Dated</b>  __________________________ <br>
+    <b>Mode/Terms of Payment</b>
+</td>
+</tr>
+</table>
+
+<br>
+
+<table>
+<tr>
+<td width="60%">
+Buyer (Bill to)<br>
+<b>Name: __________________________</b><br>
+Contact details: __________________________<br>
+<br>
+</td>
+<td>Terms of Delivery</td>
+</tr>
+</table>
+
+<br>
+
+<table>
+<tr class="center bold">
+<td width="5%">Sl No.</td>
+<td width="40%">Description of Goods</td>
+<td width="10%">HSN/SAC</td>
+<td width="10%">Quantity</td>
+<td width="10%">Rate</td>
+<td width="10%">per</td>
+<td width="15%">Amount</td>
+</tr>
+
+<tr>
+<td class="center">1</td>
+<td><textarea rows="4" placeholder="Enter goods description"></textarea></td>
+<td><input value="40111010"></td>
+<td class="center"><input id="q1" type="number" value="0" oninput="calc()"> nos</td>
+<td class="right"><input id="r1" type="number" value="0" oninput="calc()"></td>
+<td class="center">nos</td>
+<td class="right" id="a1">0.00</td>
+</tr>
+
+<tr>
+<td class="center">2</td>
+<td><textarea rows="4" placeholder="Enter goods description"></textarea></td>
+<td><input value="40111010"></td>
+<td class="center"><input id="q2" type="number" value="0" oninput="calc()"> nos</td>
+<td class="right"><input id="r2" type="number" value="0" oninput="calc()"></td>
+<td class="center">nos</td>
+<td class="right" id="a2">0.00</td>
+</tr>
+
+<tr>
+<td class="center">3</td>
+<td><textarea rows="4" placeholder="Enter goods description"></textarea></td>
+<td><input value="40111010"></td>
+<td class="center"><input id="q2" type="number" value="0" oninput="calc()"> nos</td>
+<td class="right"><input id="r2" type="number" value="0" oninput="calc()"></td>
+<td class="center">nos</td>
+<td class="right" id="a2">0.00</td>
+</tr>
+
+<tr>
+<td class="center">4</td>
+<td><textarea rows="4" placeholder="Enter goods description"></textarea></td>
+<td><input value="40111010"></td>
+<td class="center"><input id="q2" type="number" value="0" oninput="calc()"> nos</td>
+<td class="right"><input id="r2" type="number" value="0" oninput="calc()"></td>
+<td class="center">nos</td>
+<td class="right" id="a2">0.00</td>
+</tr>
+
+<tr>
+<td class="center">5</td>
+<td><textarea rows="4" placeholder="Enter goods description"></textarea></td>
+<td><input value="40111010"></td>
+<td class="center"><input id="q2" type="number" value="0" oninput="calc()"> nos</td>
+<td class="right"><input id="r2" type="number" value="0" oninput="calc()"></td>
+<td class="center">nos</td>
+<td class="right" id="a2">0.00</td>
+</tr>
+
+<tr>
+<td colspan="6" class="right bold">Total</td>
+<td class="right" id="subtotal">0.00</td>
+</tr>
+
+<tr>
+<td colspan="6" class="right bold">SGST Output @9%</td>
+<td class="right" id="sgst">0.00</td>
+</tr>
+
+<tr>
+<td colspan="6" class="right bold">CGST Output @9%</td>
+<td class="right" id="cgst">0.00</td>
+</tr>
+
+<tr>
+<td colspan="6" class="right bold">Grand Total</td>
+<td class="right bold" id="grand">0.00</td>
+</tr>
+</table>
+
+<br>
+
+<b>Amount Chargeable (in words)</b><br>
+<input type="text" placeholder="Indian Rupees __________________________ Only">
+
+<br><br>
+
+<table>
+<tr class="center bold">
+<td>HSN/SAC</td>
+<td>Taxable Value</td>
+<td>CGST Rate</td>
+<td>CGST Amount</td>
+<td>SGST Rate</td>
+<td>SGST Amount</td>
+<td>Total Tax Amount</td>
+</tr>
+
+<tr class="center">
+<td>40111010</td>
+<td id="taxableVal">0.00</td>
+<td>9%</td>
+<td id="cgstAmt">0.00</td>
+<td>9%</td>
+<td id="sgstAmt">0.00</td>
+<td id="totalTax">0.00</td>
+</tr>
+</table>
+
+<br>
+
+
+<br><br>
+
+<b>Declaration</b><br>
+We declare that this invoice shows the actual price of the goods
+described and that all particulars are true and correct.
+
+<br><br>
+
+<table class="footer-table">
+<tr>
+<td>This is a Computer Generated Invoice</td>
+<td class="right">
+For JACKAPPA TYRES<br><br><br>
+<br><br>
+Authorised Signatory
+</td>
+</tr>
+</table>
+
+</div>
+
+<script>
+function calc(){
+    let q1 = Number(document.getElementById("q1").value);
+    let r1 = Number(document.getElementById("r1").value);
+    let q2 = Number(document.getElementById("q2").value);
+    let r2 = Number(document.getElementById("r2").value);
+
+    let a1 = q1 * r1;
+    let a2 = q2 * r2;
+
+    document.getElementById("a1").innerText = a1.toFixed(2);
+    document.getElementById("a2").innerText = a2.toFixed(2);
+
+    let subtotal = a1 + a2;
+    document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+
+    let sgst = subtotal * 0.09;
+    let cgst = subtotal * 0.09;
+
+    document.getElementById("sgst").innerText = sgst.toFixed(2);
+    document.getElementById("cgst").innerText = cgst.toFixed(2);
+    document.getElementById("grand").innerText = (subtotal + sgst + cgst).toFixed(2);
+
+    document.getElementById("taxableVal").innerText = subtotal.toFixed(2);
+    document.getElementById("cgstAmt").innerText = cgst.toFixed(2);
+    document.getElementById("sgstAmt").innerText = sgst.toFixed(2);
+    document.getElementById("totalTax").innerText = (cgst + sgst).toFixed(2);
+}
+</script>
+
+</body>
+</html>
